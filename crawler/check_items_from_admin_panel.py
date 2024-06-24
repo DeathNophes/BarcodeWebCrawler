@@ -5,12 +5,12 @@ from selenium.common import NoSuchElementException
 from crawler.driver import driver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from helpers import admin_panel_link, valid_barcodes_file_path, books_data_csv_path
+from helpers import admin_panel_link, valid_barcodes_file_path, books_barcodes_csv_path
 import pandas as pd
 import time
 
 # Reading the csv file which holds the barcodes
-books_barcodes = pd.read_csv(books_data_csv_path)
+books_barcodes = pd.read_csv(books_barcodes_csv_path)
 books_list = list(books_barcodes['ISBN'])
 
 # Creating a dictionary where we will store the barcodes that have not yet been uploaded
@@ -52,13 +52,13 @@ def iterate_through_barcodes():
         search_bar.send_keys(book)
         search_bar.send_keys(Keys.ENTER)
 
-        if not check_is_book_in_database():
+        if not check_is_barcode_in_database():
             data['ISBN'].append(book)
 
         time.sleep(1)
 
 
-def check_is_book_in_database():
+def check_is_barcode_in_database():
     # If the barcode has been uploaded returns True else None
 
     try:
