@@ -1,0 +1,6 @@
+# General
+__pycache__/
+.idea/
+
+# Django specific
+*.pyc
