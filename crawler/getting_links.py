@@ -2,7 +2,7 @@
 
 # Importing necessary modules
 from bs4 import BeautifulSoup
-from helpers import pages_links_csv_path, books_links_csv_path
+from helpers import pages_links_books_csv_path, books_links_csv_path
 import pandas as pd
 import requests
 import time
@@ -23,7 +23,7 @@ def get_pages_links():
 
     # Create a DataFrame with the data and write it in the file
     df_pages = pd.DataFrame.from_dict(data, orient='columns')
-    df_pages.to_csv(pages_links_csv_path, mode='w', index=False, header=True)
+    df_pages.to_csv(pages_links_books_csv_path, mode='w', index=False, header=True)
 
 
 def export_to_file_book_links(data):
@@ -35,7 +35,7 @@ def export_to_file_book_links(data):
 
 def get_book_links():
 
-    current_pages = pd.read_csv(pages_links_csv_path)
+    current_pages = pd.read_csv(pages_links_books_csv_path)
     urls = list(current_pages['Links'])
 
     urls_data = {'urls': []}
