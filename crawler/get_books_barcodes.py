@@ -1,7 +1,7 @@
 # Gathering the barcodes from the books' links
 
 # Importing necessary modules
-from helpers import books_links_csv_path, books_data_csv_path
+from helpers import books_links_csv_path, books_barcodes_csv_path
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
@@ -12,7 +12,7 @@ book_links_data = pd.read_csv(books_links_csv_path)
 book_links_list = list(book_links_data['urls'])
 
 # Create a set for uniqueness check
-current_books_barcodes = pd.read_csv(books_data_csv_path)
+current_books_barcodes = pd.read_csv(books_barcodes_csv_path)
 barcodes = set(current_books_barcodes['ISBN'])
 
 # Creating a dictionary to store all the gathered barcodes
@@ -55,7 +55,7 @@ def export_to_file(required_data):
     # Append the data to the csv file
 
     df = pd.DataFrame.from_dict(required_data, orient='columns')
-    df.to_csv(books_data_csv_path, mode='a', index=False, header=False)
+    df.to_csv(books_barcodes_csv_path, mode='a', index=False, header=False)
 
 
 iterate_through_books_links()
