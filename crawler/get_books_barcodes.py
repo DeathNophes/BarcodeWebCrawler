@@ -9,6 +9,8 @@ import time
 
 # Read the csv file and create a list
 book_links_data = pd.read_csv(books_links_csv_path)
+
+# We use indexes to access certain range of items
 book_links_list = list(book_links_data['urls'])
 
 # Create a set for uniqueness check
@@ -21,7 +23,6 @@ data = {'ISBN': []}
 
 def iterate_through_books_links():
     # Iterate through all books' links and get their barcodes if they exist
-    # Using time.sleep() to respect robots.txt
 
     for link in book_links_list:
         html_content = requests.get(link).text
@@ -31,6 +32,8 @@ def iterate_through_books_links():
         soup = BeautifulSoup(html_content, 'lxml')
 
         characteristics = soup.find_all('table', class_='stylized attributes')
+
+        # Iterate through every characteristic
         for characteristic in characteristics:
             tables_values = characteristic.find_all('tr')
 

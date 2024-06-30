@@ -11,7 +11,9 @@ import time
 
 # Reading the csv file which holds the barcodes
 books_barcodes = pd.read_csv(books_barcodes_csv_path)
-books_list = list(books_barcodes['ISBN'])
+
+# We use indexes to access certain range of barcodes
+books_list = list(books_barcodes['ISBN'])[0:0]
 
 # Creating a dictionary where we will store the barcodes that have not yet been uploaded
 data = {'ISBN': []}
@@ -37,8 +39,7 @@ def enter_the_admin_panel():
 
 def iterate_through_barcodes():
     # Iterate through the barcodes
-    # Using time.sleep() to respect robots.txt
-    # If the barcode is not shown in the admin panel then
+    # If the barcode is not shown in the admin panel then we keep it
 
     for book in books_list:
         search_bar = driver.find_element(By.ID, "search-bar")

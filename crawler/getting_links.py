@@ -34,13 +34,13 @@ def export_to_file_book_links(data):
 
 
 def get_book_links():
-
+    # We read the links to the pages and use indexes to access certain range ot them
     current_pages = pd.read_csv(pages_links_books_csv_path)
-    urls = list(current_pages['Links'])
+    urls = list(current_pages['Links'])[0:0]
 
     urls_data = {'urls': []}
 
-    for url in urls[:1]:
+    for url in urls:
         html_text = requests.get(url).text
 
         soup = BeautifulSoup(html_text, 'lxml')
