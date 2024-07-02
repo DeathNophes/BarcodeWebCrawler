@@ -1,8 +1,7 @@
 # Gathering the barcodes from the books' links
 
 # Importing necessary modules
-from helpers import books_links_csv_path, books_barcodes_csv_path
-from get_books_links import is_page_url_valid
+from helpers import books_links_csv_path, books_barcodes_csv_path, is_page_url_valid
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests

@@ -2,7 +2,7 @@
 
 # Importing necessary modules
 from bs4 import BeautifulSoup
-from helpers import books_links_csv_path
+from helpers import books_links_csv_path, is_page_url_valid
 import pandas as pd
 import requests
 import time
@@ -21,15 +21,6 @@ if os.path.exists(books_links_csv_path):
     books_links = set(current_books_links['urls'])
 else:
     books_links = set()
-
-
-def is_page_url_valid(url):
-    try:
-        response = requests.head(url, timeout=5)
-        # Check if the satus code is 200 (OK)
-        return response.status_code == 200
-    except requests.RequestException:
-        return False
 
 
 def is_book_link_valid(book_link):
