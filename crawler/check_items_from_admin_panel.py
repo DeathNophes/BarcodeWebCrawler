@@ -76,6 +76,6 @@ def export_to_file():
             file.write(barcode + '\n')
 
 
-enter_the_admin_panel()
-iterate_through_barcodes()
-export_to_file()
+# enter_the_admin_panel()
+# iterate_through_barcodes()
+# export_to_file()

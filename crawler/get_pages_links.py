@@ -20,4 +20,4 @@ def get_pages_links():
     df_pages.to_csv(pages_links_books_csv_path, mode='w', index=False, header=True)
 
 
-get_pages_links()
+# get_pages_links()

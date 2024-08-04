@@ -71,5 +71,5 @@ def export_to_file(required_data):
         df.to_csv(books_barcodes_csv_path, mode='w', index=False, header=True)
 
 
-iterate_through_books_links()
-export_to_file(data)
+# iterate_through_books_links()
+# export_to_file(data)

@@ -62,5 +62,5 @@ def export_to_file_books_links(data):
         df_book_links.to_csv(books_links_csv_path, mode='w', index=False, header=True)
 
 
-get_book_links()
-export_to_file_books_links(books_urls)
+# get_book_links()
+# export_to_file_books_links(books_urls)
